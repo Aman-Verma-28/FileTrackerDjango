@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock title %}
+{% block homeactive %} active {% endblock homeactive %}
+
+
+{% block body %}
+
+<div class="container my-3">
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome to File Tracker</h1>
+        <p class="lead">File Tracking Manager is a web based application which helps in tracking the movement of files and receipts.</p>
+        <hr class="my-4">
+        <p>The application enables the users to maintain a consistent watch over the movement of various important documents in the process of decision- making..</p>
+      </div>
+      <p class="lead">
+        {% if user.is_authenticated %}
+        <a class="btn btn-primary btn-lg" href="/files" role="button">View Files</a>
+        <a class="btn btn-primary btn-lg" href="/track" role="button">Scan QR</a>
+        
+        {% else %}
+        <div class="modal-body">
+          Please Log In to view files.
+        </div>
+        {% endif %} 
+      </p>
+</div>
+
+<div class="container">
+    {% comment %} <h2>Popular Blogposts</h2>
+    {% for post in allposts %}
+    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 my-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary"></strong>
+          <h3 class="mb-0">{{post.title}}</h3>
+          <div class="mb-1 text-muted">Nov 12</div>
+          <p class="card-text mb-auto">{{post.content|safe| truncatechars:150}}</p>
+          <a href="/blog/{{post.slug}}" class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+
+        </div>
+      </div>
+      {% endfor %} {% endcomment %}
+</div>
+{% if user.is_authenticated %}
+{% else %}
+<!-- Button trigger modal -->
+<div id="delay">
+<button type="button" hidden class="btn btn-primary" id="clickButton" data-toggle="modal" data-target="#exampleModal">
+  
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+       
+      </div>
+      <div class="modal-body">
+        Please Log In to create your own blogs.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="closebtn" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="logInbtn" data-toggle="modal" data-target="#loginModal">Log In</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endif %}  
+
+{% endblock body %}
+
+{% block js %}
+<script>
+{% comment %}  
+  const a=1;
+  window.onload = function(){
+    if(a>1){
+      break;
+      console.log("A>1");
+    }
+    else{
+    var button = document.getElementById('clickButton');
+    button.click();
+    }
+    a+=1;
+  }  {% endcomment %}
+
+var logInbtn=document.getElementById("logInbtn")
+logInbtn.addEventListener('click',function(e){
+   var closebtn=document.getElementById("closebtn");
+    closebtn.click()
+})
+</script>
+{% endblock js %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% block title %} BlogHome {% endblock title %} 
+{% block blogactive %} active {% endblock blogactive %}
+
+
+
+
+{% block body %}
+
+<div class="container my-3">
+  <h2>Your Registered Files </h2>
+  {% for file in all_files  %}
+  <div
+    class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 my-4 shadow-sm h-md-250 position-relative"
+  >
+    <div class="col p-4 d-flex flex-column position-static">
+     <p> Filename <strong class="d-inline-block  text-primary"><a href="/files/{{file.filename}}"> {{file.filename}} </strong></a></p>
+        <p>{{file.description}}
+        {{file.owner}}</p>
+      {% comment %} <h3 class="mb-0"><a href="/blog/{{post.slug}}" class="text-dark">{{post.title}}</a></h3>
+      <div class="mb-1 text-muted">{{post.datetime}}</div>
+      <p class="card-text mb-auto">
+       <div class="preview"> {{post.content|safe| truncatechars:500}}</div>
+      </p> {% endcomment %}
+      <div class="my-2">
+        <a href="/files/{{file.filename}}" role="button" class="btn btn-primary">View QR</a>
+      </div>
+    </div>
+    <div class="col-auto d-none d-lg-block">
+   
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock body %}
+
+{% block js %}
+
+<script>
+  let previews=document.getElementsByClassName('preview');
+  Array.from(previews).forEach((element)=>{
+    element.innerHTML=element.innerText;
+  })
+</script>
+
+{% endblock js %}

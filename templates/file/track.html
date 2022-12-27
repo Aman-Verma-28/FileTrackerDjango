@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %} About {% endblock title %}
+{% block aboutactive %} active {% endblock aboutactive %}
+
+
+{% block body %}
+
+<div class="container">
+
+    <h1>QR Scan Result</h1>
+    <h1>File {{data}} , want to view or update new file spot.</h1>
+
+    <a class="btn btn-primary btn-lg" href="/history/{{data}}" role="button">View History</a>
+    <a class="btn btn-primary btn-lg" href="/update-file/{{data}}" role="button">Own File</a>
+    
+    <p></p>
+    
+</div>
+
+<script>
+    {% comment %} let a =0
+    
+    a=a+1
+    localStorage.setItem("a",a)
+    a=localStorage.getItem("a",a)`    
+    if(a==1){
+        console.log("inside if",a)
+    }
+    else{
+        a=localStorage.getItem("a",a)`    
+        console.log("inside else",a)
+            window.onload = function () {
+            window.location = "/";
+        }
+  } {% endcomment %}
+</script>
+{% endblock body %}
+

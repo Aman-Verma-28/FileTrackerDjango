@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %} Create Blog {% endblock title %}
+{% block createBlogactive %} active {% endblock createBlogactive %}
+
+
+{% block body %}
+
+<div class="container mt-5">
+    {% if user.is_authenticated %}
+    {% comment %} <form method="post" class="mt-5 pt-5 mb-5 pb-5"
+          enctype="multipart/form-data" action="{% url 'add_blog' %}">
+        {% csrf_token %} {% endcomment %}
+        <form method="post">
+            {% csrf_token %}
+        <div class="row">
+            <div class="col-md-12">
+                <label>Enter File Name</label>
+                <input type="text" class="form-control" placeholder="Enter title" name="title">
+            </div>
+            
+            <div class="col-md-12 my-2">
+                Description
+                <textarea name="content" id="" class="w-100" rows="10"></textarea>
+                
+                
+                <div class="form-floating">
+                    
+                    
+                </div>
+            </div>
+            <div class="col-md-12">
+                <label>Enter Tags</label>
+                <input type="text" class="form-control" placeholder="Enter Tags" name="tags">
+            </div>
+
+            {% comment %} <div class="col-md-12 my-2">
+                <input type="file" name="image" class="form-control btn" >
+            </div> {% endcomment %}
+
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-2 w-100">Create File</button>
+        <br>
+        <br>
+
+    </form>
+    {% else %}
+    <p>Please login to post a comment</p>
+    {% endif %}
+</div>
+  {% comment %} {% url 'see_blog' %} {% endcomment %}
+  {% comment %} <a href="" class="btn btn-warning">View Your blogs</a> {% endcomment %}
+  
+
+
+{% endblock body %}

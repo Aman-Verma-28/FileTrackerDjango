@@ -8,9 +8,6 @@
 
 <div class="container mt-5">
     {% if user.is_authenticated %}
-    {% comment %} <form method="post" class="mt-5 pt-5 mb-5 pb-5"
-          enctype="multipart/form-data" action="{% url 'add_blog' %}">
-        {% csrf_token %} {% endcomment %}
         <form method="post">
             {% csrf_token %}
         <div class="row">
@@ -34,9 +31,7 @@
                 <input type="text" class="form-control" placeholder="Enter Tags" name="tags">
             </div>
 
-            {% comment %} <div class="col-md-12 my-2">
-                <input type="file" name="image" class="form-control btn" >
-            </div> {% endcomment %}
+
 
         </div>
 
@@ -49,9 +44,6 @@
     <p>Please login to post a comment</p>
     {% endif %}
 </div>
-  {% comment %} {% url 'see_blog' %} {% endcomment %}
-  {% comment %} <a href="" class="btn btn-warning">View Your blogs</a> {% endcomment %}
-  
 
 
 {% endblock body %}

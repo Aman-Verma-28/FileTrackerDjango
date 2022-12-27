@@ -5,19 +5,6 @@ from files.views import *
 from files import views
 
 urlpatterns = [
-    # path("register/", RegisterView.as_view(), name="register"),
-    # path("login/", LoginView.as_view(), name="login"),
-    # path('about/', AboutView.as_view(),name="about"),
-    # path('', HomeView.as_view(),name="home"),
-    # path("profile/", ProfileView.as_view(), name="profile"),
-    # path("contact/", ContactView.as_view(), name="contact"),
-    # path("logout/", LogoutView.as_view(), name="logout"),
-    # path('search',views.search,name="search"),
-    
-    #  path('video_feed', views.video_feed, name='video_feed'),
-# ]
-
-# urlpatterns = [
     path("track/", views.TrackFileView, name="track"),
     path("update-file/<str:slug>", views.OwnFileHistory, name="history"),
     path("history/<str:slug>", views.GetFileHistory, name="history"),

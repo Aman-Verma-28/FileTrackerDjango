@@ -27,21 +27,7 @@
 </div>
 
 <div class="container">
-    {% comment %} <h2>Popular Blogposts</h2>
-    {% for post in allposts %}
-    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 my-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary"></strong>
-          <h3 class="mb-0">{{post.title}}</h3>
-          <div class="mb-1 text-muted">Nov 12</div>
-          <p class="card-text mb-auto">{{post.content|safe| truncatechars:150}}</p>
-          <a href="/blog/{{post.slug}}" class="stretched-link">Continue reading</a>
-        </div>
-        <div class="col-auto d-none d-lg-block">
 
-        </div>
-      </div>
-      {% endfor %} {% endcomment %}
 </div>
 {% if user.is_authenticated %}
 {% else %}
@@ -76,19 +62,6 @@
 
 {% block js %}
 <script>
-{% comment %}  
-  const a=1;
-  window.onload = function(){
-    if(a>1){
-      break;
-      console.log("A>1");
-    }
-    else{
-    var button = document.getElementById('clickButton');
-    button.click();
-    }
-    a+=1;
-  }  {% endcomment %}
 
 var logInbtn=document.getElementById("logInbtn")
 logInbtn.addEventListener('click',function(e){

@@ -16,11 +16,6 @@
      <p> Filename <strong class="d-inline-block  text-primary"><a href="/files/{{file.filename}}"> {{file.filename}} </strong></a></p>
         <p>{{file.description}}
         {{file.owner}}</p>
-      {% comment %} <h3 class="mb-0"><a href="/blog/{{post.slug}}" class="text-dark">{{post.title}}</a></h3>
-      <div class="mb-1 text-muted">{{post.datetime}}</div>
-      <p class="card-text mb-auto">
-       <div class="preview"> {{post.content|safe| truncatechars:500}}</div>
-      </p> {% endcomment %}
       <div class="my-2">
         <a href="/files/{{file.filename}}" role="button" class="btn btn-primary">View QR</a>
       </div>

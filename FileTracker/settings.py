@@ -46,7 +46,12 @@ INSTALLED_APPS = [
     "debug_toolbar",
     'rest_framework',
     # 'rest_framework_simplejwt',
+    'django.contrib.sites',
     'files',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -60,7 +65,19 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+SITE_ID = 2
+
+LOGIN_REDIRECT_URL = '/'
+
+
 ROOT_URLCONF = 'FileTracker.urls'
+
+ACCOUNT_USER_MODEL_USERNAME_FIELD = 'email'
+
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False
 
 TEMPLATES = [
     {
@@ -110,6 +127,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -152,4 +178,15 @@ MESSAGE_TAGS = {
     messages.INFO: '',
     50: 'critical',
     messages.ERROR:'danger'
+}
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': '244111094001-os5v153thsfrdv2g1m8ildffr54nbst0.apps.googleusercontent.com',
+            'secret': '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',
+            'key': ''
+        }
+    }
 }

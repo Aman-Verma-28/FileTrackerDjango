@@ -6,18 +6,8 @@ WORKDIR  "/FileTrackerDjango"
 
 COPY . .
 
-
-WORKDIR "/opt/infilect/dev/repos/infiviz_backend/infivizserver"
-
 RUN  pip install -r requirements.txt
 
-FROM base as runtime
+CMD "python manage.py runserver 127.0.0.1:8000"
 
-COPY --from=builder /opt/infilect/dev/envs/py3infivizenv /opt/infilect/dev/envs/py3infivizenv
-RUN apt-get update && apt-get install -y postgresql-client 
-
-ENV PATH="/opt/infilect/dev/envs/py3infivizenv/bin:$PATH"
-WORKDIR "/opt/infilect/dev/repos/infiviz_backend/infivizserver"
-
-
-
+EXPOSE 8000

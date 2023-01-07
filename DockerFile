@@ -1,0 +1,23 @@
+FROM python:3.10.8-slim 
+
+RUN git clone https://github.com/rajatgarg765/FileTrackerDjango.git
+
+WORKDIR  "/FileTrackerDjango"
+
+COPY . .
+
+
+WORKDIR "/opt/infilect/dev/repos/infiviz_backend/infivizserver"
+
+RUN  pip install -r requirements.txt
+
+FROM base as runtime
+
+COPY --from=builder /opt/infilect/dev/envs/py3infivizenv /opt/infilect/dev/envs/py3infivizenv
+RUN apt-get update && apt-get install -y postgresql-client 
+
+ENV PATH="/opt/infilect/dev/envs/py3infivizenv/bin:$PATH"
+WORKDIR "/opt/infilect/dev/repos/infiviz_backend/infivizserver"
+
+
+

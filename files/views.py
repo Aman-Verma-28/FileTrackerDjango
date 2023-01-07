@@ -7,7 +7,7 @@ from files.models import User , FileHistoryModel, FileModel
 from django.contrib.auth import authenticate, login, logout
 
 from django.conf import settings
-from qrcode import *
+from qrcode import make
 import time
 from django.utils import timezone
 import cv2

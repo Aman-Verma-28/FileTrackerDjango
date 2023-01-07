@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  web:
+    build:
+      context: .
+    ports:
+      -  "8000:8000"
+    volumes:
+      - ./files/:/files/
+      - ./FileTracker/:/FileTracker/
+      - ./media/:/media/
+      - ./templates/:/templates/
+      - ./db.sqlite3/:/db.sqlite3
+      - ./docker-compose.yml/:/docker-compose.yml
+      - ./Dockerfile/:/Dockerfile
+      - ./manage.py:/manage.py
+      - ./requirements.txt:/requirements.txt
+    command: >
+      sh -c "python manage.py makemigrations && 
+             python manage.py migrate && 
+             python manage.py runserver 0.0.0.0:8000"

@@ -82,9 +82,6 @@ def CreateFileView(request):
                 is_active=is_active,
                 qrimage=qrimage,
             )
-            file_obj.save()
-            created_on_obj=FileModel.objects.get(filename=filename)
-            # print(created_on_obj.created_on,"created_on")
             data={
                 filename:[[{
                 "owner":owner,
@@ -92,9 +89,8 @@ def CreateFileView(request):
                 "tags":tags,
                 "is_active":is_active,
                 "qrimage":qrimage,
-                "created_on":str(created_on_obj.created_on)}]]}
-            file_history_obj = FileHistoryModel.objects.create(file_state=file_obj,owners=data)
-            file_history_obj.save()
+                "created_on":str(file_obj.created_on)}]]}
+            FileHistoryModel.objects.create(file_state=file_obj,owners=data)
             messages.success(request,"Your file is successfully created")
             return redirect("/")
 
